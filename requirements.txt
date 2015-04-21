@@ -64,7 +64,6 @@ pyparsing==2.0.2
 pyreadline==2.0
 python-dateutil==2.1
 pytz==2013b
-pywin32==218
 pyzmq==13.1.0
 reportlab==2.7
 rope==0.9.4
