@@ -7,9 +7,6 @@ Created on Fri Feb 13 09:36:29 2015
 
 from __future__ import division
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-import seaborn as sb
 
 #Name, MyRating, RTPub, RTCritic, MCPub, MCCritic
 #At least 20 useful tweets required
@@ -189,7 +186,7 @@ twitflicksData = [
 ('Test', .25, .61, .89),
 ('Titanic', .75, .69, .88)
 ]
-
+'''
 
 MyRating = np.array([i[1] for i in MovieData])
 PubRating = np.array([i[2] for i in MovieData])
@@ -266,4 +263,4 @@ if __name__ == "__main__":
     plt.plot([0,1],[0,1])
     plt.show()
     plt.axis([0,1, 0, 1])
-    
+"""

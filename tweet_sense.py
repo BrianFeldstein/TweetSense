@@ -8,7 +8,7 @@ import pickle
 #scriptpath = "C:\Users\Brian\Desktop\CodeForGit\Twitter"
 #sys.path.append(os.path.abspath(scriptpath))
 
-from MovieData2 import MovieData
+from MovieDataTS import MovieData
 #from MovieReviews3 import CreateX, ProcessX, Threshold, sigmoid
 #from collections import Counter
 #import TwitterSearch as TSch
