@@ -57,7 +57,6 @@ psutil==0.7.1
 pycparser==2.09.1
 pycrypto==2.6
 pycurl==7.19.0
-pyemf==2.0.0
 pyface==4.3.0
 pyfits==3.1.1
 pyflakes==0.7.2
