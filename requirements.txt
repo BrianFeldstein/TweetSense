@@ -37,7 +37,6 @@ coverage==3.6
 cssselect==0.8
 cx-Freeze==4.3.1
 decorator==3.4.0
-distribute==0.6.45
 docutils==0.10
 enable==4.3.0
 enaml==0.6.8
