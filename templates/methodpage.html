@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TweetSense</title>	
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  </head>  
+
+  <body>
+    <div class=movietitle>
+	  <br>
+	  <p5>How Does It Work?</p5>
+	  <hr style="border: 1px outset #595955;" color: rgb(100,0,150)>
+	</div>
+	
+	<div>
+	  <br>
+	  <p style="text-align:center;color:rgb(0,0,0);font-size:30px;">Sentiment Analysis<br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">TweetSense
+	  reviews movies by first learning which words (or pairs of consecutive words)
+	  imply a positive or negative sentiment.  This is accomplished with the
+	  use of a data set of 50,000 movie reviews which have previously been labelled by humans
+		as being either positive or negative.  These were obtained from:<br></p>
+	  <a href="http://ai.stanford.edu/~amaas/data/sentiment/" style="padding-left:150px;color:rgb(0,0,0);">http://ai.stanford.edu/~amaas/data/sentiment/ <br></a>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  These labelled reviews have been split into a training set (40,000 reviews) and a validation set
+	  (10,000 reviews), and 
+	  have been used to train a logistic regression algorithm
+	  to recognize review sentiment.  The features used are as follows:  The 12,000 most
+	  commonly appearing words (or word pairs) in the positive reviews are combined with an analogous
+	  set from the negative reviews (note that "the" and words with less then three letters are dropped).
+	  The number of occurrences of each of these terms in 
+	  a given review are counted, and divided by the total number of words in the review to obtain the
+      raw features.	  
+	  Finally, mean subtraction and feature normalization (by the feature maximum) are performed.
+	  <br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  Since the number of features being used is rather large, regularization is essential to prevent
+	  over-fitting.  After training, the success rate for labelling the reviews in the training set
+	  is around 94%, and the success rate on the validation set is at 90% after maximizing 
+	  over the regularization parameter.  Below we show a plot of the 25 largest regression coefficients
+	  along with their associated words or word pairs.  As can be seen, positive/negative sentiment
+	  words correspond to 
+	  positive/negative regression coefficients, as they should.
+	  <br></p>
+	  <p style = "text-align:center;"><img src="/static/images/Words.png" style = "background-color:white;-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;"></p>
+	  <p><br> </p>
+	  <p style="text-align:center;color:rgb(0,0,0);font-size:30px">Tweet Review Construction<br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  Tweets are downloaded using the TwitterSearch Python library:
+	  <br></p>
+	  <a href="https://github.com/ckoepp/TwitterSearch" style="padding-left:150px;color:rgb(0,0,0);">https://github.com/ckoepp/TwitterSearch <br></a>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  For a given movie, tweets are collected which contain both the movie title as well as 
+	  the word "movie".  The latter is required to appear since many movie titles consist of ordinary English
+	  words, which by themselves would match many off-topic	tweets.  For analysis, all non alphabetic characters are removed
+	  from tweets, and any duplicate tweets are discarded as spam.  
+	  <br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  The Tweets from a given movie are then fed into the TweetSense logistic regression algorithm
+	  for sentiment analysis.  Since most tweets about a movie contain little expression of sentiment, only
+	  tweets with a strong positive or negative sentiment are used to construct the final review score.  The
+	  score is then obtained as the ratio of the number of positive tweets, to the number of positive plus negative
+	  tweets.
+	  <br></p>
+	  <p><br></p>
+	</div>
+	
+	
+  </body>
+</html>

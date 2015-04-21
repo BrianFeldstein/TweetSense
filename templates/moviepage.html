@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TweetSense</title>	
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  </head>  
+
+  <body>
+    <div class=movietitle>
+	  <br>
+	  <p3>{{name}}</p3>
+	  <hr style="border: 1px outset #595955;" color: rgb(100,0,150)>
+	</div>
+	<div class=imgrate>
+	  <img src="/static/images/Blank.jpg" width="0" height="25" style="opacity: 0;"><img src={{image}} alt={{image}} style="width:120px;height:178px;" align="center"><img src="/static/images/Blank.jpg" width="65" height="25" style="opacity: 0;">
+	  <p4>Tweet<span style= "color: #fff;text-shadow:-1px -1px 0 rgb(100,0,150),1px -1px 0 rgb(100,0,150),-1px 1px 0 rgb(100,0,150),1px 1px 0 rgb(100,0,150); ">Sense</span> Rating:&nbsp;&nbsp;&nbsp;</p4><span style = "color:rgb(245,210,0);font-size:35px">{{rating}}</span>
+	  <img src="/static/images/Blank.jpg" width="100" height="25" style="opacity: 0;">
+	</div>
+	<div>
+	<table align = 'left'>
+		<tr>
+		  <td>
+	      <p style="font-size:25px;">Positive Reviews</p>
+		  </td>
+		</tr>
+	  {% for k in PosRev %}
+	    <tr>
+		  <td style = "font-size:17px;">
+	      {{k}}
+		  </td>
+		</tr>
+	  {% endfor %}
+	</table>
+	</div>
+	
+	<div>
+	<table align = 'right'>
+		<tr>
+		  <td>
+	      <p style="font-size:25px;">Negative Reviews</p>
+		  </td>
+		</tr>
+	  {% for k in NegRev %}
+	    <tr>
+		  <td style = "font-size:17px;">
+	      {{k}}
+		  </td>
+		</tr>
+	  {% endfor %}
+	</table>
+	</div>
+	
+  </body>
+</html>

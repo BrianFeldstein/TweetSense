@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TweetSense</title>	
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  </head>  
+
+  <body>
+    <div class=movietitle>
+	  <br>
+	  <p5>Comparison With RottenTomatoes</p5>
+	  <hr style="border: 1px outset #595955;" color: rgb(100,0,150)>
+	</div>
+	
+	<div>
+	  <br>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  After performing movie reviews with TweetSense, a crucial question is whether or
+	  not the resulting scores are in any sense 'reasonable'.  We can evaluate their reasonableness
+	  by cross-checking
+	  against the reviews found on RottenTomatoes.com:
+	  <br></p>
+	  <a href="http://www.rottentomatoes.com" style="padding-left:150px;color:rgb(0,0,0);">http://www.rottentomatoes.com <br></a>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  At the very least, one would hope that there would be a rough correlation between TweetSense ratings
+	  and RottenTomatoes ratings.  As we will see, it turns out that in fact a stronger, and even more 
+	  interesting statement can be made:  We find evidence that TweetSense ratings are in fact 
+	  more representative of the sentiment of the general public than either the RottenTomatoes 
+	  critic ratings, or even the RottenTomatoes audience ratings!
+	  <br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  For the 61 movies so far reviewed by TweetSense, we perform a linear fit of the TweetSense scores
+	  to the RottenTomatoes audience scores, and also to the critic scores.  The results are shown below.
+	  For comparison, we also show a linear fit of the RottenTomatoes critic scores to the audience scores.
+	  <br></p>
+	  <p style = "text-align:center;"><img src="/static/images/TSRvsRTA.png"  width="400" style = "-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
+	  <img src="/static/images/TSRvsRTC.png"  width="400" style = "-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
+	  <img src="/static/images/RTCRvsRTA.png"  width="400" style = "-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
+	  </p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  This data already suggests something interesting.  We see that TweetSense scores correlate fairly well
+	  with RottenTomatoes audience scores (correlation coefficient r = .73).  Moreover, RottenTomatoes critic scores correlate about
+	  similarly well with the audience scores (r = .79).  However, the correlation between TweetSense scores
+	  and critic scores is significantly worse (r = .45).  Inspection of the review data sheds some light on
+	  this issue:  By far the most common ordering of the review scores is TweetSense > audience > critic.  This
+	  ordering appears in 27 out of the 61 reviews.  One might wonder if this could be caused by a systematic 
+	  tendency for TweetSense ratings to be large, and critic ratings to be small.  However, 
+	  the second most common ordering for the scores is the opposite ordering, critic > audience > TweetSense!  This
+	 ordering appears in 10 cases, with the 4 other possible orderings occurring between 4 and 8 times each.
+	  Looking at some examples is helpful to figure out what might be going on.  Here are a few of the more
+	  extreme cases:
+	  <br></p>
+	  <table bgcolor=white align = "center" style="width:40%;border: 1px solid black;border-collapse: collapse;-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
+      <tr>
+	    <th style="border: 1px solid black;border-collapse: collapse;" >Movie</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">TweetSense</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Audience</th> 
+        <th style="border: 1px solid black;border-collapse: collapse;">Critic</th>
+      </tr>
+	  <tr>
+	    <td style="border: 1px solid black;border-collapse: collapse;">Get Hard</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">75</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">60</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">29</td>
+      </tr>
+	 <tr>
+	    <td style="border: 1px solid black;border-collapse: collapse;">The Cobbler</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">71</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">40</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">9</td>
+      </tr>
+	  <td style="border: 1px solid black;border-collapse: collapse;">The Wedding Ringer</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">91</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">73</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">28</td>
+      </tr>
+	  <tr>
+	    <td style="border: 1px solid black;border-collapse: collapse;">A Most Violent Year</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">64</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">73</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">90</td>
+      </tr>
+	  <tr>
+	    <td style="border: 1px solid black;border-collapse: collapse;">Birdman</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">63</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">80</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">93</td>
+      </tr>
+	  <tr>
+	    <td style="border: 1px solid black;border-collapse: collapse;">Boyhood</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:red">72</td>
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:orange">82</td> 
+        <td style="border: 1px solid black;border-collapse: collapse;text-align:center;color:green">98</td>
+      </tr>
+      </table>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  We see here examples that certain types of movies have a tendency to be preferred by critics compared
+	  to the general public on Twitter (such as the comedies "Get Hard", "The Cobbler" and "The Wedding Ringer"),
+	  while others have the opposite tendency (such as the slower paced dramas "A Most Violent Year",
+	  "Boyhood" and "Birdman").
+	  <br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  We can thus make the hypothesis that critics and Twitter users have somewhat dissimilar tastes in movies,
+	  with the RottenTomatoes audience falling somewhere in between (or perhaps being a combination
+	  of the two groups).  One way to test this hypothesis is to see if our ability to predict the RottenTomatoes
+	  audience scores from TweetSense and critic scores improves if we combine those two data sets.  The 
+	  result is shown in the following plot, in which linear regression was used to predict the audience scores
+	  using the TweetSense and critic scores as features:
+	  <br></p>
+	  <p style = "text-align:center;"><img src="/static/images/RTCandTSvsRTA.png" width="500" style = "-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;"></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  We have indeed obtained a much better fit than before (r = .89)!  In fact, the best fit
+	  model for the audience scores turns out to be very close to a simple average of the TweetSense and critic
+	  scores.  This supports the fascinating idea that movie ratings taken from Twitter
+	  may actually be more representative of the general movie going population than reviews taken from
+	  RottenTomatoes.  This would simply be a further iteration of the idea that RottenTomatoes
+	  audience reviews could be more representative than critic reviews.
+	  <br></p>
+	  <p align = "justify" style="padding-left:150px;padding-right:150px;color:rgb(100,0,150);">
+	  How statistically significant is our conclusion?  The fact that r increased upon adding
+	  a new feature to our linear regression model is by itself not interesting; 
+	  r necessarily increases when new features are added.  The question is whether the increase
+	  was big enough for us to say that it was not due simply to chance.  The standard way to address this
+	  issue is through an "F-Test", which quantifies the probability that the improvement obtained in the mean
+	  squared error could have been due to chance.  In this case, we find that this probability is tiny:
+	  just 10<sup>-9</sup>!  Note that this is not due to either the TweetSense or critic scores
+	  simply being much better
+	  correlated to the audience scores:  by themselves each predicts the audience
+	  score about equally well, and both contribute almost equally to the combined best fit!  This gives strong
+	  evidence that TweetSense and critic scores are representative of differing demographics, with
+	  the RottenTomatoes audience falling somewhere in between.  It may thus be that TweetSense
+	  is actually most 
+	  representative of the sentiment of the general public!
+	  
+	  
+
+	  <!--If we break our data set of movies into 
+	  a training set and a validation set (say with a 2:1 ratio), and randomly vary the way that
+	  the two sets are chosen, we 
+	  can the compute mean and standard deviation for the value of R<sup>2</sup> for our predictions
+	  on the validation set.  Using only TweetSense scores or Critic Scores to predict the Audience
+	  scores, we obtain R<sup>2</sup> = .50 &plusmn .1 and R<sup>2</sup> = .50 &plusmn .1 respectively.
+	  Combining the two together, we obtain R<sup>2</sup> = .75 &plusmn .06.  This shows that the
+	  improvement we have obtained in the fit is indeed statistically significant, and that the 
+	  TweetSense and Critic scores contain different pieces of information about Audience scores.-->
+	  <br></p>
+	  <p><br></p>
+	</div>
+	
+	
+  </body>
+</html>
