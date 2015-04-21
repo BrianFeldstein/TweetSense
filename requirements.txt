@@ -29,7 +29,6 @@ decorator==3.4.0
 docutils==0.10
 enaml==0.6.8
 encore==0.3
-etsdevtools==4.0.2
 etsproxy==0.1.2
 fonttools==2.3
 formlayout==1.0.13
