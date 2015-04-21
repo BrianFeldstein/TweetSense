@@ -25,7 +25,6 @@ configobj==4.7.2
 cov-core==1.7
 coverage==3.6
 cssselect==0.8
-cx-Freeze==4.3.1
 decorator==3.4.0
 docutils==0.10
 enable==4.3.0
