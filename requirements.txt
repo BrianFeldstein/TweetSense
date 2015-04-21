@@ -67,7 +67,6 @@ pytz==2013b
 pyzmq==13.1.0
 reportlab==2.7
 rope==0.9.4
-sampy==1.2.1
 scimath==4.1.2
 scipy==0.12.0
 seaborn==0.5.1
