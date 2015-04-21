@@ -22,7 +22,6 @@ certifi==14.5.14
 cffi==0.6
 colorama==0.2.5
 configobj==4.7.2
-configparser==3.3.0r2
 cov-core==1.7
 coverage==3.6
 cssselect==0.8
