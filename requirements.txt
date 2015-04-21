@@ -41,7 +41,6 @@ logilab-astng==0.24.3
 logilab-common==0.59.1
 lxml==3.2.0
 mahotas==0.99
-mayavi==4.3.0
 mlpy==3.5.0
 nltk==3.0.2
 nose==1.3.0
